@@ -1,0 +1,143 @@
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--lightest);
+  border-right: 1px solid var(--dark);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: width 0.2s ease;
+}
+
+.expanded {
+  width: 16rem;
+}
+
+.collapsed {
+  width: 4.5rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.75rem;
+  border: none;
+  border-radius: 9999px;
+  background: var(--light);
+  color: var(--darkest);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.toggle:hover {
+  background: var(--dark);
+}
+
+.collapsed .toggle {
+  align-self: center;
+}
+
+.toggle svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0 0.75rem;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--darkest);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.link:hover {
+  background: var(--light);
+}
+
+.active {
+  background: var(--dark);
+  font-weight: 700;
+}
+
+.active:hover {
+  background: var(--dark);
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.collapsed .label {
+  display: none;
+}
+
+.collapsed .link {
+  justify-content: center;
+  padding: 0.6rem;
+}
+
+.collapsed .active {
+  background: transparent;
+}
+
+/* @media (prefers-color-scheme: dark) { */
+  .nav {
+    background: var(--darkest);
+    border-right-color: #262626;
+  }
+
+  .toggle {
+    background: transparent;
+    color: #ededed;
+  }
+
+  .toggle:hover {
+    background: transparent;
+  }
+
+  .link {
+    color: var(--dark);
+  }
+
+  .link:hover {
+    background: var(--dark);
+    color: var(--darkest);
+  }
+
+  .active {
+    background: var(--dark);
+    color: var(--darkest);
+  }
+
+  .active:hover {
+    background: var(--dark);
+    color: var(--darkest);
+  }
+/* } */

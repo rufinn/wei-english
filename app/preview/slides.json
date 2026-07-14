@@ -1,0 +1,44 @@
+[
+  {
+    "type": "cover",
+    "titleLines": ["PRESENT", "SIMPLE"],
+    "subtitle": "HABIT. FACT. ROUTINE.",
+    "scrollLabel": "The beauty of everyday life lies in its pattern",
+    "footerText": "WEI'S ENGLISH"
+  },
+  {
+    "type": "feature",
+    "headlineLines": ["Every day,", "every time."],
+    "subtitle": "ROUTINE. FACT. TRUTH",
+    "description": [
+      "We use Present Simple for habits,",
+      "general truths, routines,",
+      "and things that are always true."
+    ],
+    "cards": [{
+      "label": "Formula"
+    }, {
+      "label": "Usage"
+    }, {
+      "label": "Examples"
+    }]
+  },
+  {
+    "type": "feature",
+    "headlineLines": ["Add an -s,", "third person."],
+    "description": [
+      "With he, she, and it,",
+      "the verb takes an -s ending.",
+      "She walks. He works. It rains."
+    ]
+  },
+  {
+    "type": "feature",
+    "headlineLines": ["Always. Often.", "Never."],
+    "description": [
+      "Adverbs of frequency tell us",
+      "how often something happens:",
+      "always, usually, often, sometimes, never."
+    ]
+  }
+]

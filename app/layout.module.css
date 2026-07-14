@@ -1,0 +1,11 @@
+.shell {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100%;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}

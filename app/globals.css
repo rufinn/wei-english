@@ -1,6 +1,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --darkest: #855f37;
+  --lightest: #ead9c9;
+  --dark: hsl(33, 26%, 83%);
+  --light: #f6e9de;
+
+  --card-default-bg: #fcdfc8;
 }
 
 @media (prefers-color-scheme: dark) {
