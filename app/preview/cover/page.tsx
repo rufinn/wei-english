@@ -6,6 +6,7 @@ import slides from "../slides.json";
 import { SLIDES_MAP, type Slide } from "@/app/_data/tenses";
 import CoverTemplate from "../../_templates/cover";
 import FeatureTemplate from "../../_templates/feature";
+import FillInTemplate from "../../_templates/quiz/fillIn";
 import Card from "@/app/_components/Card";
 import styles from './cover.module.css';
 
@@ -39,6 +40,16 @@ function CoverPreviewContent() {
 
   if (slide.type === "cover") {
     return <CoverTemplate {...slide} onNext={goNext} />;
+  }
+
+  if (slide.type === "quiz") {
+    return (
+      <FillInTemplate
+        {...slide}
+        onBack={goBack}
+        onNext={isLast && !nextDeck ? undefined : goNext}
+      />
+    );
   }
 
   return (

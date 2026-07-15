@@ -1,0 +1,487 @@
+.quiz {
+  --ivory: #faf8f3;
+  --ink: #141414;
+  --red: #b3122f;
+  --taupe: #8a8072;
+  --rule: #d8d3c7;
+  --body-ink: #3e3c38;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.page {
+  width: 100%;
+  max-width: 1180px;
+  padding: clamp(1.25rem, 3vw, 30px) clamp(1.25rem, 4vw, 48px) 46px;
+}
+
+/* Running head ---------------------------------------------------------- */
+.runhead {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 10.5px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 12px;
+}
+
+.mag {
+  font-family: var(--font-display), serif;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+
+/* Test head ------------------------------------------------------------- */
+.testhead {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 40px) 0 30px;
+}
+
+.kick {
+  font-size: 11px;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.heading {
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 7vw, 58px);
+  margin: 14px 0 10px;
+}
+
+.heading i {
+  font-style: italic;
+}
+
+.dek {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4c4a45;
+  letter-spacing: 0.04em;
+}
+
+/* Progress -------------------------------------------------------------- */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 6px 0 40px;
+}
+
+.progressLbl {
+  font-size: 10.5px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.track {
+  flex: 1;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+
+.trackFill {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  border-top: 2px solid var(--ink);
+  display: block;
+  transition: width 0.4s ease;
+}
+
+.pct {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: 18px;
+}
+
+/* Body ------------------------------------------------------------------ */
+.testbody {
+  display: flex;
+}
+
+.qcol {
+  flex: 1.6;
+  padding-right: clamp(1.5rem, 4vw, 52px);
+  border-right: 1px solid var(--ink);
+}
+
+.qnum {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.qnumBig {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.5rem, 9vw, 88px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.qnumOf {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.prompt {
+  margin-top: 26px;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 4vw, 34px);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.blank {
+  display: inline-block;
+  min-width: 170px;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+  font-style: italic;
+  color: var(--red);
+}
+
+.blankWrong {
+  color: var(--taupe);
+  text-decoration: line-through;
+}
+
+.zh {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--taupe);
+}
+
+/* Options --------------------------------------------------------------- */
+.opts {
+  margin-top: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.opt {
+  flex: 1 1 120px;
+  text-align: center;
+  border: 1px solid var(--ink);
+  padding: 16px 10px 14px;
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: 23px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.opt:disabled {
+  cursor: default;
+}
+
+.opt:not(:disabled):hover {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.opt:not(:disabled):hover .k {
+  color: #b5afa2;
+}
+
+.k {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-top: 6px;
+}
+
+.optSel {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.optSel .k {
+  color: #b5afa2;
+}
+
+.optWrong {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--ivory);
+}
+
+.optWrong .k {
+  color: #e6c4cb;
+}
+
+.optCorrect {
+  border-color: var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+}
+
+.optCorrect .k {
+  color: var(--red);
+}
+
+/* Verdict --------------------------------------------------------------- */
+.verdict {
+  border: 1px solid var(--ink);
+  padding: 26px 28px;
+  background: #fff;
+}
+
+.verdictWord {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.verdictWordOk {
+  color: var(--ink);
+}
+
+.verdictText {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--body-ink);
+}
+
+.verdictText b {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.verdictText i {
+  font-family: var(--font-display), serif;
+}
+
+/* Nav ------------------------------------------------------------------- */
+.navrow {
+  margin-top: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.skip,
+.prev {
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.skip:hover,
+.prev:hover {
+  color: var(--ink);
+}
+
+.nextBtn {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--ivory);
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  padding: 14px 34px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+/* Side column ----------------------------------------------------------- */
+.sidecol {
+  display: flex;
+  flex-direction: column;
+  transition: flex-grow 0.3s ease, flex-basis 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidecolOpen {
+  flex: 1 1 0;
+  padding-left: clamp(1.5rem, 4vw, 52px);
+}
+
+.sidecolClosed {
+  flex: 0 0 auto;
+  padding-left: clamp(1rem, 3vw, 28px);
+}
+
+.panelToggle {
+  align-self: flex-start;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0 0 10px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.panelToggle:hover {
+  color: var(--ink);
+}
+
+.panelBody[hidden] {
+  display: none;
+}
+
+.edNote {
+  border: 1px solid var(--ink);
+  padding: 26px 28px;
+  background: #fff;
+}
+
+.edKick {
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.edTitle {
+  font-family: var(--font-display), serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.edBody {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--body-ink);
+}
+
+.pull {
+  margin: 34px 0;
+  padding: 26px 0;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.pullQ {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: 25px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.pullQ b {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.pullAttr {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.scorecard {
+  margin-top: 0;
+}
+
+.scoreLbl {
+  font-size: 10px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 12px;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  display: block;
+}
+
+.dotOn {
+  background: var(--ink);
+}
+
+.dotMiss {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.dotCurrent {
+  box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3px var(--taupe);
+}
+
+@media screen and (max-width: 860px) {
+  .testbody {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .qcol {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2.5rem;
+  }
+
+  .sidecol {
+    padding-left: 0;
+  }
+}

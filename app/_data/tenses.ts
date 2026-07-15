@@ -1,12 +1,15 @@
 import type { CoverTemplateProps } from "../_templates/cover";
 import type { FeatureTemplateProps } from "../_templates/feature";
+import type { FillInTemplateProps } from "../_templates/quiz/fillIn";
+import { RELATIVE_CLAUSES_QUIZ_FILL_IN } from "./relative_clauses";
 
 export type Slide =
   | ({ type: "cover" } & CoverTemplateProps)
   | ({ type: "feature"; cards?: { label: string }[] } & Omit<
       FeatureTemplateProps,
       "children"
-    >);
+    >)
+  | ({ type: "quiz" } & Omit<FillInTemplateProps, "onBack" | "onNext">);
 
 export const PRESENT_SIMPLE_COVER = {
   "titleLines": ["PRESENT", "SIMPLE"],
@@ -102,10 +105,18 @@ export const FUTURE_TENSE = [
   }
 ]
 
+export const RELATIVE_CLAUSES = [
+  {
+    "type": "quiz",
+    "quiz": RELATIVE_CLAUSES_QUIZ_FILL_IN
+  }
+]
+
 
 
 export const SLIDES_MAP: { label: string; slug: string; data: Slide[] }[] = [
     { label: '01 Present Simple', slug: 'present-simple', data: PRESENT_SIMPLE as Slide[] },
     { label: '02 Past Simple', slug: 'past-simple', data: PAST_SIMPLE as Slide[] },
-    { label: '03 Future Tense', slug: 'future-tense', data: FUTURE_TENSE as Slide[] }
+    { label: '03 Future Tense', slug: 'future-tense', data: FUTURE_TENSE as Slide[] },
+    { label: '04 Relative Clauses', slug: 'relative-clauses', data: RELATIVE_CLAUSES as Slide[] },
 ]
