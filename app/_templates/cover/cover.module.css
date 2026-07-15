@@ -1,9 +1,7 @@
 .cover {
-  /* Global keyframes (app/_styles/animation.css) referenced via custom
-     properties: Turbopack/Lightning CSS scopes bare keyframe idents in a
-     module, so var() indirection is needed to reach the global names. */
   --fade-up: fadeInUp;
   --fade-left: fadeInLeft;
+  --unroll-left: unrollLeft;
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -55,8 +53,9 @@
 
 .titleLine {
   color: #141414;
-  opacity: 0;
-  animation: var(--fade-up) 0.6s ease both;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: var(--fade-left) 6s ease both;
   animation-delay: calc(0.4s + (var(--i, 0) * 0.12s));
 }
 
@@ -69,9 +68,11 @@
   font-style: italic;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   color: #6f7452;
-  opacity: 0;
-  animation: var(--fade-up) 0.6s ease both;
-  animation-delay: 0.9s;
+  /* opacity: 0; */
+  overflow: hidden;
+  white-space: nowrap;
+  animation: var(--unroll-left) 6s ease both;
+  animation-delay: 2s;
 }
 
 .bullets {
@@ -112,9 +113,11 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   color: rgba(20, 20, 20, 0.55);
-  opacity: 0;
-  animation: var(--fade-up) 0.5s ease both;
-  animation-delay: 1s;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    var(--unroll-left) 6s ease 1.5s both;
+  animation-delay: 4s;
 }
 
 .scrollLine {
@@ -130,10 +133,10 @@
   vertical-align: bottom;
   border-right: 2px solid currentColor;
   opacity: 0;
-  animation:
+  /* animation:
     var(--fade-left) 0.5s ease 1.5s both,
     typing 1s steps(20, end) 1.5s both,
-    caret 0.75s step-end infinite 1.5s;
+    caret 0.75s step-end infinite 1.5s; */
 }
 
 .footerText {
