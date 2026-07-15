@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import NavBar from "./_components/NavBar";
+import QueryProvider from "./_components/QueryProvider";
 import styles from "./layout.module.css";
 import "./globals.css";
 import { SLIDES_MAP } from "./_data/tenses";
@@ -28,10 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <div className={styles.shell}>
-          <NavBar items={SLIDES_MAP} />
-          <main className={styles.main}>{children}</main>
-        </div>
+        <QueryProvider>
+          <div className={styles.shell}>
+            <NavBar items={SLIDES_MAP} />
+            <main className={styles.main}>{children}</main>
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );

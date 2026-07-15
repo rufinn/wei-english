@@ -52,8 +52,12 @@ export default function CoverTemplate({
     >
       {navLinks && navLinks.length > 0 ? (
         <nav className={styles.nav} aria-label="Primary">
-          {navLinks.map((link) => (
-            <span key={link} className={styles.navLink}>
+          {navLinks.map((link, index) => (
+            <span
+              key={link}
+              className={styles.navLink}
+              style={{ "--i": index } as React.CSSProperties}
+            >
               {link}
             </span>
           ))}
@@ -65,7 +69,11 @@ export default function CoverTemplate({
       <div className={styles.content}>
         <h1 className={styles.title}>
           {titleLines.map((line, index) => (
-            <span key={`${index}-${line}`} className={styles.titleLine}>
+            <span
+              key={`${index}-${line}`}
+              className={styles.titleLine}
+              style={{ "--i": index } as React.CSSProperties}
+            >
               {line}
             </span>
           ))}
@@ -80,8 +88,10 @@ export default function CoverTemplate({
 
         {bullets &&
           <ul className={styles.bullets}>
-            {bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
+            {bullets.map((bullet, index) => (
+              <li key={bullet} style={{ "--i": index } as React.CSSProperties}>
+                {bullet}
+              </li>
             ))}
           </ul>
         }

@@ -49,10 +49,16 @@ export default function FeatureTemplate({
       style={backgroundColor ? { backgroundColor } : undefined}
     >
       <section className={styles.topPanel}>
-        <section className={styles.main}>
+        <section className={styles.leftPanel}>
         <h1 className={styles.headline}>
           {headlineLines.map((line, index) => (
-            <span key={`${index}-${line}`}>{line}</span>
+            <span
+              key={`${index}-${line}`}
+              className={styles.headlineLine}
+              style={{ "--i": index } as React.CSSProperties}
+            >
+              {line}
+            </span>
           ))}
         </h1>
 
@@ -63,13 +69,19 @@ export default function FeatureTemplate({
 
           {
             subtitle &&
-              <p> { subtitle }</p>
+              <p className={styles.subtitle}>{subtitle}</p>
           }
 
 
         <p className={styles.description}>
           {description.map((line, index) => (
-            <span key={`${index}-${line}`}>{line}</span>
+            <span
+              key={`${index}-${line}`}
+              className={styles.descriptionLine}
+              style={{ "--i": index } as React.CSSProperties}
+            >
+              {line}
+            </span>
           ))}
         </p>
         </section>
