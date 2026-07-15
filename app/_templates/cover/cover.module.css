@@ -68,9 +68,6 @@
   font-style: italic;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   color: #6f7452;
-  /* opacity: 0; */
-  overflow: hidden;
-  white-space: nowrap;
   animation: var(--unroll-left) 6s ease both;
   animation-delay: 2s;
 }
@@ -113,8 +110,6 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   color: rgba(20, 20, 20, 0.55);
-  white-space: nowrap;
-  overflow: hidden;
   animation:
     var(--unroll-left) 6s ease 1.5s both;
   animation-delay: 4s;

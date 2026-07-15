@@ -79,9 +79,9 @@ export default function CoverTemplate({
           ))}
         </h1>
 
-        <p className={styles.subtitle}>{subtitle}</p>
+        <p className={`unrollLeft ${styles.subtitle}`}>{subtitle}</p>
 
-        <span className={styles.scroll}>
+        <span className={`unrollLeft ${styles.scroll}`}>
           <span className={styles.scrollLine} />
           {scrollLabel}
         </span>
