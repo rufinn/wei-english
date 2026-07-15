@@ -69,7 +69,7 @@ export default function FeatureTemplate({
 
           {
             subtitle &&
-              <p className={styles.subtitle}>{subtitle}</p>
+              <p className={`unrollLeft ${styles.subtitle}`}>{subtitle}</p>
           }
 
 
@@ -77,7 +77,7 @@ export default function FeatureTemplate({
           {description.map((line, index) => (
             <span
               key={`${index}-${line}`}
-              className={styles.descriptionLine}
+              className={`unrollLeft ${styles.descriptionLine}`}
               style={{ "--i": index } as React.CSSProperties}
             >
               {line}

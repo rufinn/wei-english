@@ -1,7 +1,6 @@
 .feature {
-  /* Global keyframe (app/_styles/animation.css) via custom property:
-     Turbopack/Lightning CSS scopes bare keyframe idents in a module. */
   --fade-up: fadeInUp;
+  --unroll-left: unrollLeft;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -33,9 +32,8 @@
 }
 
 .subtitle {
-  opacity: 0;
-  animation: var(--fade-up) 0.6s ease both;
-  animation-delay: 0.5s;
+  animation: var(--unroll-left) 6s ease both;
+  animation-delay: 1s;
 }
 
 .divider {
@@ -57,9 +55,8 @@
 }
 
 .descriptionLine {
-  opacity: 0;
-  animation: var(--fade-up) 0.5s ease both;
-  animation-delay: calc(0.6s + (var(--i, 0) * 0.1s));
+  animation: var(--unroll-left) 6s ease both;
+  animation-delay: calc(6s + (var(--i, 0) * 4.5s));
 }
 
 .nextButton,

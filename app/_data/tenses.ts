@@ -65,7 +65,7 @@ export const PAST_SIMPLE = [
     "headlineLines": ["It happened.", "It's finished."],
     "subtitle": "COMPLETED. SPECIFIC TIME. FINISHED",
     "description": [
-      "We use Past Simple tense for actions that started and finished in the past."
+      "We use Past Simple tense for actions ", "that started and finished in the past."
     ],
     "cards": [{
       "label": "Formula"
