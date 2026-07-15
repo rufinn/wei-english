@@ -28,7 +28,8 @@ export interface FeatureTemplateProps {
   onNext?: () => void;
 
   subtitle?: string;
-  children: React.ReactNode;
+  rightPanel?: React.ReactNode;
+  bottomPanel?: React.ReactNode;
 }
 
 export default function FeatureTemplate({
@@ -39,45 +40,54 @@ export default function FeatureTemplate({
   onBack,
   onNext,
   subtitle,
-  children
+  rightPanel,
+  bottomPanel
 }: FeatureTemplateProps) {
   return (
     <section
       className={`${styles.feature} ${headlineFont.variable} ${bodyFont.variable}`}
       style={backgroundColor ? { backgroundColor } : undefined}
     >
+      <section className={styles.topPanel}>
+        <section className={styles.main}>
+        <h1 className={styles.headline}>
+          {headlineLines.map((line, index) => (
+            <span key={`${index}-${line}`}>{line}</span>
+          ))}
+        </h1>
 
-      <section>
-      <h1 className={styles.headline}>
-        {headlineLines.map((line, index) => (
-          <span key={`${index}-${line}`}>{line}</span>
-        ))}
-      </h1>
+        <hr
+          className={styles.divider}
+          style={dividerColor ? { background: dividerColor } : undefined}
+        />
 
-      <hr
-        className={styles.divider}
-        style={dividerColor ? { background: dividerColor } : undefined}
-      />
-
-        {
-          subtitle &&
-            <p> { subtitle }</p>
-        }
+          {
+            subtitle &&
+              <p> { subtitle }</p>
+          }
 
 
-      <p className={styles.description}>
-        {description.map((line, index) => (
-          <span key={`${index}-${line}`}>{line}</span>
-        ))}
-      </p>
+        <p className={styles.description}>
+          {description.map((line, index) => (
+            <span key={`${index}-${line}`}>{line}</span>
+          ))}
+        </p>
+        </section>
+
+      {
+        rightPanel &&
+          <section className={styles.rightPanel}>
+          { rightPanel }
+        </section>
+      }
       </section>
 
-        {
-          children &&
-            <section className={styles.rightPanel}>
-            { children }
+      {
+        bottomPanel &&
+          <section className={styles.bottomPanel}>
+            { bottomPanel }
           </section>
-        }
+      }
       
 
       {onBack && (
@@ -98,6 +108,8 @@ export default function FeatureTemplate({
           </svg>
         </button>
       )}
+
+      
 
       {onNext && (
         <button

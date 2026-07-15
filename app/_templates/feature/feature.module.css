@@ -1,7 +1,7 @@
 .feature {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100vh;
@@ -80,6 +80,21 @@
   height: 1.25rem;
 }
 
+.featureWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main {
+  max-width: 50%;
+}
+
 .rightPanel {
   flex-grow: 1;
+}
+.topPanel,
+.bottomPanel {
+  display: flex;
+  flex-direction: row;
 }

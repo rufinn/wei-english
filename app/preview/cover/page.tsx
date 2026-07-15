@@ -46,17 +46,25 @@ function CoverPreviewContent() {
       {...slide}
       onBack={goBack}
       onNext={isLast && !nextDeck ? undefined : goNext}
-    >
-      <div className={`${styles.vertical} ${styles.cards}`}>
-      {
-        slide.cards && slide.cards.map((item) => {
-          return (
-            <Card key={item.label} label={item.label} />
-          )
-        })
+
+      rightPanel={
+        <div className={`${styles.vertical} ${styles.cards}`}>
+        {
+          slide.cards && slide.cards.map((item) => {
+            return (
+              <Card key={item.label} label={item.label} />
+            )
+          })
+        }
+        </div>
       }
-      </div>
-    </FeatureTemplate>
+
+      bottomPanel={
+        <div>
+          <Card label={"Signal Word"} />
+        </div>
+      }
+    />
   );
 }
 
