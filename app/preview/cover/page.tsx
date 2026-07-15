@@ -60,8 +60,8 @@ function CoverPreviewContent() {
       }
 
       bottomPanel={
-        <div>
-          <Card label={"Signal Word"} />
+        <div className={`${styles.featureBottom}`}>
+          <Card className={styles.card} label={"Signal Word"} />
         </div>
       }
     />

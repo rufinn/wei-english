@@ -24,7 +24,13 @@ export interface NavBarProps {
   defaultExpanded?: boolean;
 }
 
-function NavList({ items }: { items: NavItem[] }) {
+function NavList({
+  items,
+  onNavigate,
+}: {
+  items: NavItem[];
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const activeSlug = searchParams.get("slug");
@@ -48,6 +54,7 @@ function NavList({ items }: { items: NavItem[] }) {
                 className={`${styles.link} ${isActive ? styles.active : ""}`}
                 title={item.label}
                 aria-current={isActive ? "page" : undefined}
+                onClick={onNavigate}
               >
                 <span className={styles.label}>{item.label}</span>
               </Link>
@@ -89,7 +96,7 @@ export default function NavBar({
       </button>
 
       <Suspense fallback={<ul className={styles.list} />}>
-        <NavList items={items} />
+        <NavList items={items} onNavigate={() => setExpanded(false)} />
       </Suspense>
     </nav>
   );

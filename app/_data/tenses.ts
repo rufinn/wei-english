@@ -90,7 +90,7 @@ export const FUTURE_TENSE = [
     "headlineLines": ["It will happen."],
     "subtitle": "FUTURE. PLAN. POSSIBILITY.",
     "description": [
-      "We use Future Tense for actions that will happen in the future."
+      "We use Future Tense for actions","that will happen in the future."
     ],
     "cards": [{
       "label": "Formula"

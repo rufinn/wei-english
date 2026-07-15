@@ -10,6 +10,7 @@ export interface CardProps {
   /** Overrides the default accent color (label + divider). */
   accentColor?: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export default function Card({
@@ -17,11 +18,12 @@ export default function Card({
   lines,
   backgroundColor,
   accentColor,
-  children
+  children,
+  className = ""
 }: CardProps) {
   return (
     <div
-      className={styles.card}
+      className={`${styles.card} ${className}`}
       style={backgroundColor ? { backgroundColor } : undefined}
     >
       <p className={styles.label} style={accentColor ? { color: accentColor } : undefined}>

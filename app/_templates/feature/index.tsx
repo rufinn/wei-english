@@ -29,7 +29,11 @@ export interface FeatureTemplateProps {
 
   subtitle?: string;
   rightPanel?: React.ReactNode;
+  /** Delay before the right panel fades in (any CSS time value). Defaults to 1.5s. */
+  rightPanelDelay?: string;
   bottomPanel?: React.ReactNode;
+  /** Delay before the bottom panel fades in (any CSS time value). Defaults to 1.5s. */
+  bottomPanelDelay?: string;
 }
 
 export default function FeatureTemplate({
@@ -41,7 +45,9 @@ export default function FeatureTemplate({
   onNext,
   subtitle,
   rightPanel,
-  bottomPanel
+  rightPanelDelay = "1.5s",
+  bottomPanel,
+  bottomPanelDelay = "1.5s"
 }: FeatureTemplateProps) {
   return (
     <section
@@ -88,7 +94,10 @@ export default function FeatureTemplate({
 
       {
         rightPanel &&
-          <section className={styles.rightPanel}>
+          <section
+            className={styles.rightPanel}
+            style={{ "--right-panel-delay": rightPanelDelay } as React.CSSProperties}
+          >
           { rightPanel }
         </section>
       }
@@ -96,7 +105,10 @@ export default function FeatureTemplate({
 
       {
         bottomPanel &&
-          <section className={styles.bottomPanel}>
+          <section
+            className={styles.bottomPanel}
+            style={{ "--bottom-panel-delay": bottomPanelDelay } as React.CSSProperties}
+          >
             { bottomPanel }
           </section>
       }
