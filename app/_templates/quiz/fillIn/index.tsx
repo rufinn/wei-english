@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Bodoni_Moda, Jost } from "next/font/google";
 import styles from "./fillIn.module.css";
+import ScoreCard from "../_components/scoreCard";
 
 const displayFont = Bodoni_Moda({
   subsets: ["latin"],
@@ -240,6 +241,39 @@ export default function FillInTemplate({
               })}
             </div>
 
+            {answered && selectedOption && (
+              <div className={styles.verdict}>
+                <span
+                  className={`${styles.verdictWord} ${
+                    isCorrect ? styles.verdictWordOk : ""
+                  }`}
+                >
+                  {isCorrect ? "Correct —" : "Not quite —"}
+                </span>
+                <p className={styles.verdictText}>
+                  {selectedOption.explanation}
+                  {!isCorrect && (
+                    <>
+                      {" "}
+                      The intended answer is <b>{current.primaryAnswer}</b>.
+                    </>
+                  )}
+                </p>
+              </div>
+            )}
+
+            <ScoreCard
+              statuses={questions.map((q) =>
+                answers[q.id] == null
+                  ? "unanswered"
+                  : q.acceptedAnswers.includes(answers[q.id])
+                  ? "correct"
+                  : "incorrect"
+              )}
+              currentIndex={index}
+              total={total}
+            />
+
             <div className={styles.navrow}>
               <div className={styles.navLeft}>
                 {(index > 0 || onBack) && (
@@ -260,7 +294,7 @@ export default function FillInTemplate({
           </div>
 
           {/* Side column ----------------------------------------------- */}
-          <div
+          {/* <div
             className={`${styles.sidecol} ${
               panelOpen ? styles.sidecolOpen : styles.sidecolClosed
             }`}
@@ -322,7 +356,7 @@ export default function FillInTemplate({
               </div>
             </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

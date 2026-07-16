@@ -1,0 +1,44 @@
+.scorecard {
+  --ivory: #faf8f3;
+  --ink: #141414;
+  --red: #b3122f;
+  --taupe: #8a8072;
+
+  margin-top: 0;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.scoreLbl {
+  font-size: 0.625rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 0.75rem;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5625rem;
+}
+
+.dot {
+  width: 0.6875rem;
+  height: 0.6875rem;
+  border-radius: 50%;
+  border: 0.0625rem solid var(--ink);
+  display: block;
+}
+
+.dotOn {
+  background: var(--ink);
+}
+
+.dotMiss {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.dotCurrent {
+  box-shadow: 0 0 0 0.125rem var(--ivory), 0 0 0 0.1875rem var(--taupe);
+}
