@@ -209,3 +209,279 @@ export const RELATIVE_CLAUSES_QUIZ_FILL_IN = {
     }
   ]
 }
+
+export const RELATIVE_CLAUSES_QUIZ_READING = {
+  "id": "relative-clauses-part-6-reading",
+  "meta": {
+    "title": "Integrated Reading",
+    "titleZh": "綜合填空練習",
+    "part": 6,
+    "topic": "Relative pronouns in context",
+    "instructions": "Drag a relative pronoun from the word bank into each blank.",
+    "instructionsZh": "將關係代名詞從字庫拖曳至每個空格。",
+    "note": "who, which and that may be used more than once.",
+    "interaction": "drag-and-drop",
+    "reusableAnswers": true,
+    "totalBlanks": 8,
+    "scoring": {
+      "pointsPerBlank": 1,
+      "maxScore": 8
+    },
+    "source": "relative-clauses.html — PART6_SEGMENTS (numbered blanks only)",
+    "excluded": "Lettered fixed-phrase vocabulary blanks (a)-(h) are omitted; their words are written into the article text."
+  },
+  "wordBank": [
+    {
+      "id": "wb-who",
+      "value": "who",
+      "label": "who",
+      "reusable": true,
+      "usedIn": [
+        "(2)",
+        "(6)",
+        "(7)",
+        "(8)"
+      ],
+      "timesUsed": 4
+    },
+    {
+      "id": "wb-which",
+      "value": "which",
+      "label": "which",
+      "reusable": true,
+      "usedIn": [
+        "(1)",
+        "(3)",
+        "(4)"
+      ],
+      "timesUsed": 3
+    },
+    {
+      "id": "wb-whose",
+      "value": "whose",
+      "label": "whose",
+      "reusable": true,
+      "usedIn": [
+        "(5)"
+      ],
+      "timesUsed": 1
+    },
+    {
+      "id": "wb-that",
+      "value": "that",
+      "label": "that",
+      "reusable": true,
+      "usedIn": [
+        "(1)",
+        "(3)"
+      ],
+      "timesUsed": 2
+    }
+  ],
+  "article": {
+    "text": "肯愛協會 is a mental health charity {{1}} was founded on the belief that everyone deserves emotional support. The volunteers {{2}} work there come from various professional backgrounds, and many are familiar with the real challenges faced by people in our community.\n\nOne of the programmes {{3}} has attracted the most attention is a community counselling initiative, {{4}} connects trained counsellors with individuals in need of support. The founder, {{5}} background is in clinical psychology, believes that every act of kindness can make a difference to people {{6}} feel isolated or overwhelmed.\n\nThe charity also works hard to raise awareness of mental health issues through public events. Those {{7}} take part in these programmes often say the experience changed their perspective. The organisation is dedicated to ensuring that its services reach everyone in the community. It aims to give hope to anyone {{8}} is struggling, and encourages all of us to be aware of the mental health needs of those around us.",
+    "paragraphCount": 3,
+    "placeholderFormat": "{{n}} where n = blank order"
+  },
+  "paragraphs": [
+    {
+      "index": 1,
+      "tokens": [
+        {
+          "type": "text",
+          "value": "肯愛協會 is a mental health charity "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-1",
+          "label": "(1)"
+        },
+        {
+          "type": "text",
+          "value": " was founded on the belief that everyone deserves emotional support. The volunteers "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-2",
+          "label": "(2)"
+        },
+        {
+          "type": "text",
+          "value": " work there come from various professional backgrounds, and many are familiar with the real challenges faced by people in our community."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tokens": [
+        {
+          "type": "text",
+          "value": "One of the programmes "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-3",
+          "label": "(3)"
+        },
+        {
+          "type": "text",
+          "value": " has attracted the most attention is a community counselling initiative, "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-4",
+          "label": "(4)"
+        },
+        {
+          "type": "text",
+          "value": " connects trained counsellors with individuals in need of support. The founder, "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-5",
+          "label": "(5)"
+        },
+        {
+          "type": "text",
+          "value": " background is in clinical psychology, believes that every act of kindness can make a difference to people "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-6",
+          "label": "(6)"
+        },
+        {
+          "type": "text",
+          "value": " feel isolated or overwhelmed."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tokens": [
+        {
+          "type": "text",
+          "value": "The charity also works hard to raise awareness of mental health issues through public events. Those "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-7",
+          "label": "(7)"
+        },
+        {
+          "type": "text",
+          "value": " take part in these programmes often say the experience changed their perspective. The organisation is dedicated to ensuring that its services reach everyone in the community. It aims to give hope to anyone "
+        },
+        {
+          "type": "blank",
+          "blankId": "p6-8",
+          "label": "(8)"
+        },
+        {
+          "type": "text",
+          "value": " is struggling, and encourages all of us to be aware of the mental health needs of those around us."
+        }
+      ]
+    }
+  ],
+  "blanks": [
+    {
+      "id": "p6-1",
+      "label": "(1)",
+      "order": 1,
+      "paragraph": 1,
+      "placeholder": "{{1}}",
+      "acceptedAnswers": [
+        "which",
+        "that"
+      ],
+      "correctAnswer": "which",
+      "multipleAccepted": true
+    },
+    {
+      "id": "p6-2",
+      "label": "(2)",
+      "order": 2,
+      "paragraph": 1,
+      "placeholder": "{{2}}",
+      "acceptedAnswers": [
+        "who"
+      ],
+      "correctAnswer": "who",
+      "multipleAccepted": false
+    },
+    {
+      "id": "p6-3",
+      "label": "(3)",
+      "order": 3,
+      "paragraph": 2,
+      "placeholder": "{{3}}",
+      "acceptedAnswers": [
+        "that",
+        "which"
+      ],
+      "correctAnswer": "that",
+      "multipleAccepted": true
+    },
+    {
+      "id": "p6-4",
+      "label": "(4)",
+      "order": 4,
+      "paragraph": 2,
+      "placeholder": "{{4}}",
+      "acceptedAnswers": [
+        "which"
+      ],
+      "correctAnswer": "which",
+      "multipleAccepted": false
+    },
+    {
+      "id": "p6-5",
+      "label": "(5)",
+      "order": 5,
+      "paragraph": 2,
+      "placeholder": "{{5}}",
+      "acceptedAnswers": [
+        "whose"
+      ],
+      "correctAnswer": "whose",
+      "multipleAccepted": false
+    },
+    {
+      "id": "p6-6",
+      "label": "(6)",
+      "order": 6,
+      "paragraph": 2,
+      "placeholder": "{{6}}",
+      "acceptedAnswers": [
+        "who"
+      ],
+      "correctAnswer": "who",
+      "multipleAccepted": false
+    },
+    {
+      "id": "p6-7",
+      "label": "(7)",
+      "order": 7,
+      "paragraph": 3,
+      "placeholder": "{{7}}",
+      "acceptedAnswers": [
+        "who"
+      ],
+      "correctAnswer": "who",
+      "multipleAccepted": false
+    },
+    {
+      "id": "p6-8",
+      "label": "(8)",
+      "order": 8,
+      "paragraph": 3,
+      "placeholder": "{{8}}",
+      "acceptedAnswers": [
+        "who"
+      ],
+      "correctAnswer": "who",
+      "multipleAccepted": false
+    }
+  ]
+}

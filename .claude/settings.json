@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cd /Users/rufina/Git/wei-english; echo \"=== any :global left in source? ===\"; grep -rn \":global\" app/ --include=\"*.css\" || echo \"none\"; echo; yarn build > /tmp/claude-501/-Users-rufina-Git-wei-english/5c4e5c03-6881-4a5d-aca8-db8792906c40/scratchpad/build2.log 2>&1; echo \"build exit: $?\")"
+      "Bash(cd /Users/rufina/Git/wei-english; echo \"=== any :global left in source? ===\"; grep -rn \":global\" app/ --include=\"*.css\" || echo \"none\"; echo; yarn build > /tmp/claude-501/-Users-rufina-Git-wei-english/5c4e5c03-6881-4a5d-aca8-db8792906c40/scratchpad/build2.log 2>&1; echo \"build exit: $?\")",
+      "Bash(yarn tsc *)"
     ],
     "additionalDirectories": [
       "/tmp/claude-501/-Users-rufina-Git-wei-english/5c4e5c03-6881-4a5d-aca8-db8792906c40/scratchpad"
