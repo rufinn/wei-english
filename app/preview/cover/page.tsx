@@ -9,6 +9,7 @@ import FeatureTemplate from "../../_templates/feature";
 import FillInTemplate from "../../_templates/quiz/fillIn";
 import Card from "@/app/_components/Card";
 import styles from './cover.module.css';
+import { RELATIVE_CLAUSES_SLIDES_MAP } from "@/app/_data/relative_clauses";
 
 const defaultSlides = slides as Slide[];
 
@@ -16,12 +17,13 @@ function CoverPreviewContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const slug = searchParams.get("slug");
+  const slides = RELATIVE_CLAUSES_SLIDES_MAP;
 
-  const entry = SLIDES_MAP.find((item) => item.slug === slug);
+  const entry = slides.find((item) => item.slug === slug);
   const typedSlides = (entry ? entry.data : defaultSlides) as Slide[];
 
-  const deckPos = entry ? SLIDES_MAP.indexOf(entry) : -1;
-  const nextDeck = deckPos >= 0 ? SLIDES_MAP[deckPos + 1] : undefined;
+  const deckPos = entry ? slides.indexOf(entry) : -1;
+  const nextDeck = deckPos >= 0 ? slides[deckPos + 1] : undefined;
 
   const [index, setIndex] = useState(0);
 
@@ -57,25 +59,18 @@ function CoverPreviewContent() {
       {...slide}
       onBack={goBack}
       onNext={isLast && !nextDeck ? undefined : goNext}
-
-      rightPanel={
-        <div className={`${styles.vertical} ${styles.cards}`}>
-        {
-          slide.cards && slide.cards.map((item) => {
-            return (
-              <Card key={item.label} label={item.label}> Hello world </Card>
-            )
-          })
-        }
-        </div>
-      }
-
-      bottomPanel={
-        <div className={`${styles.featureBottom}`}>
-          <Card className={styles.card} label={"Signal Word"} />
-        </div>
-      }
-    />
+    >
+      <div className={`${styles.vertical} ${styles.cards}`}>
+         {
+           slide.cards && slide.cards.map((item) => {
+             return (
+               <Card key={item.label} label={item.label} />
+             )
+           })
+         }
+         <Card className={styles.card} label={"Signal Word"} />
+      </div>
+      </FeatureTemplate>
   );
 }
 

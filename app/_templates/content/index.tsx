@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Anton, Playfair_Display } from "next/font/google";
 import { SLIDES_MAP } from "@/app/_data/tenses";
+import { RELATIVE_CLAUSES_SLIDES_MAP } from "@/app/_data/relative_clauses";
 import styles from "./content.module.css";
 
 const titleFont = Anton({
@@ -16,35 +19,34 @@ const subtitleFont = Playfair_Display({
   variable: "--font-subtitle",
 });
 
-export interface ContentItem {
-  /** Row label, e.g. "Present Simple". */
-  label: string;
-  /** Deck slug used to build the cover link, e.g. "present-simple". */
-  slug: string;
-}
-
 export interface ContentTemplateProps {
   /** Display heading. Defaults to "CONTENTS". */
   heading?: string;
   /** Italic strapline under the heading. Omit to hide. */
   subtitle?: string;
-  /** Rows to list. Defaults to every deck in SLIDES_MAP. */
-  items?: ContentItem[];
   /** Overrides the default background color. */
   backgroundColor?: string;
 }
 
-const defaultItems: ContentItem[] = SLIDES_MAP.map(({ label, slug }) => ({
-  // SLIDES_MAP labels are prefixed with a number ("01 Present Simple");
-  // strip it since the template renders its own index badge.
-  label: label.replace(/^\d+\s+/, ""),
-  slug,
-}));
+/** The slide maps a viewer can switch between. */
+const SOURCES = [
+  {
+    id: "tenses",
+    label: "English Tenses",
+    href: `/preview/cover?slug=tenses-content`,
+    map: SLIDES_MAP,
+  },
+  {
+    id: "relative-clauses",
+    label: "Relative Clauses",
+    href: `/preview/cover?slug=rel-clauses-content`,
+    map: RELATIVE_CLAUSES_SLIDES_MAP,
+  },
+] as const;
 
 export default function ContentTemplate({
   heading = "CONTENTS",
   subtitle,
-  items = defaultItems,
   backgroundColor,
 }: ContentTemplateProps) {
   return (
@@ -58,21 +60,19 @@ export default function ContentTemplate({
       </header>
 
       <ol className={styles.list}>
-        {items.map((item, index) => (
+        {SOURCES.map((s, index) => (
           <li
-            key={item.slug}
+            key={s.id}
             className={styles.item}
             style={{ "--i": index } as React.CSSProperties}
           >
-            <Link
-              href={`/preview/cover?slug=${item.slug}`}
-              className={styles.link}
-            >
+            <Link href={s.href} className={styles.link}>
               <span className={styles.index}>
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className={styles.label}>{item.label}</span>
-              {/* <span className={styles.rule} /> */}
+              <span className={styles.label}>{s.label}</span>
+              <span className={styles.sourceCount}>{s.map.length}</span>
+              <span className={styles.rule} aria-hidden="true" />
               <svg
                 className={styles.arrow}
                 viewBox="0 0 24 24"

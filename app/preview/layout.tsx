@@ -1,5 +1,6 @@
 import NavBar from "../_components/NavBar";
 import { SLIDES_MAP } from "../_data/tenses";
+import { RELATIVE_CLAUSES_SLIDES_MAP } from "../_data/relative_clauses";
 import styles from "./layout.module.css";
 
 export default function PreviewLayout({
@@ -9,7 +10,7 @@ export default function PreviewLayout({
 }>) {
   return (
     <div className={styles.shell}>
-      <NavBar items={SLIDES_MAP} />
+      <NavBar maps={[SLIDES_MAP, RELATIVE_CLAUSES_SLIDES_MAP]} />
       <main className={styles.main}>{children}</main>
     </div>
   );

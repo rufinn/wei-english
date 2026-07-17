@@ -32,6 +32,9 @@ export interface TypingTextProps {
   className?: string;
   /** Hides the blinking caret entirely (both the empty-state and typing caret). */
   noCaret?: boolean;
+  /** Gates the animation: while false, characters stay hidden (but still reserve
+   *  their layout space) and typing only begins once this flips to true. */
+  start?: boolean;
 }
 
 export default function TypingText({
@@ -43,6 +46,7 @@ export default function TypingText({
   onDone,
   className = "",
   noCaret = true,
+  start = true,
 }: TypingTextProps) {
   // Split once, emoji-safe. All characters render from the first paint so the
   // browser fixes the line breaks before a single one becomes visible.
@@ -65,6 +69,8 @@ export default function TypingText({
   });
 
   useEffect(() => {
+    if (!start) return;
+
     const reduced =
       typeof matchMedia !== "undefined" &&
       matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -110,7 +116,7 @@ export default function TypingText({
       clearTimeout(startTimer);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [text, cps, startDelay]);
+  }, [text, cps, startDelay, start]);
 
   return (
     <p

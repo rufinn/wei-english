@@ -1,4 +1,6 @@
-export const RELATIVE_CLAUSES_QUIZ_FILL_IN = {
+import { Slide } from "./tenses"
+
+export const RELATIVE_CLAUSES_QUIZ_FILL_IN_DATA = {
   "id": "relative-clauses-part-1",
   "type": "fill_in",
   "meta": {
@@ -485,3 +487,49 @@ export const RELATIVE_CLAUSES_QUIZ_READING = {
     }
   ]
 }
+
+export const RELATIVE_CLAUSES_COVER = [
+  {
+    "type": "cover",
+    "titleLines": ["RELATIVE CLAUSES"],
+    "subtitle": "",
+    "scrollLabel": "Learning how to  identify, use, and explain relative clauses.",
+    "footerText": "WEI'S ENGLISH --- Find your way to speak confidently.",
+  }
+]
+
+export const RELATIVE_CLAUSES = [
+  {
+    "type": "cover",
+    "titleLines": ["RELATIVE CLAUSES"],
+    "subtitle": "PLAN. EXPECTATION. POSSIBILITY.",
+    "scrollLabel": "It will happen. We are looking ahead.",
+    "footerText": "WEI'S ENGLISH"
+  },
+  {
+    "type": "feature",
+    "headlineLines": ["It will happen."],
+    "subtitle": "FUTURE. PLAN. POSSIBILITY.",
+    "description": [
+      "We use Future Tense for actions","that will happen in the future."
+    ],
+    "cards": [{
+      "label": "Formula"
+    }, {
+      "label": "Usage"
+    }, {
+      "label": "Examples"
+    }]
+  }
+];
+
+export const RELATIVE_CLAUSES_QUIZ_FILL_IN = [
+  {
+    "type": "quiz",
+    "quiz": RELATIVE_CLAUSES_QUIZ_FILL_IN_DATA
+  }
+]
+export const RELATIVE_CLAUSES_SLIDES_MAP: { label: string; slug: string; data: Slide[] }[] = [
+    { label: 'Contnet', slug: 'rel-clauses-content', data: RELATIVE_CLAUSES_COVER as Slide[] },
+    { label: 'Quiz: Fill In', slug: 'relative-clauses', data: RELATIVE_CLAUSES_QUIZ_FILL_IN as Slide[] },
+]

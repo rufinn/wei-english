@@ -2,6 +2,7 @@
 
 import { Anton, Playfair_Display } from "next/font/google";
 import styles from "./cover.module.css";
+import TypingText from "@/app/_components/TypingText";
 
 const titleFont = Anton({
   subsets: ["latin"],
@@ -93,9 +94,9 @@ export default function CoverTemplate({
 
         <p className={`unrollLeft ${styles.subtitle}`}>{subtitle}</p>
 
-        <span className={`unrollLeft ${styles.scroll}`}>
+        <span className={styles.scroll}>
           <span className={styles.scrollLine} />
-          {scrollLabel}
+          <TypingText text={scrollLabel} startDelay={4.8} />
         </span>
 
         {coverContent && coverContent.length > 0 ? (

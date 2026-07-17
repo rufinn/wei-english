@@ -135,12 +135,22 @@
   animation-delay: var(--bottom-panel-delay, 1.5s);
 }
 
+.content {
+  opacity: 0;
+}
+
+.contentVisible {
+  animation: var(--fade-up) 1s ease both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .headlineLine,
   .subtitle,
   .descriptionLine,
   .rightPanel,
-  .bottomPanel {
+  .bottomPanel,
+  .content,
+  .contentVisible {
     animation: none;
     opacity: 1;
   }

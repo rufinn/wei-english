@@ -20,24 +20,37 @@ export interface NavItem {
 export interface NavBarProps {
   /** Nav links to render. Defaults to the mock data in nav-items.json. */
   items?: NavItem[];
+  /**
+   * One or more slide-deck maps. NavBar renders the map whose entries contain
+   * the current `?slug=` (falling back to the first map). This selection lives
+   * here rather than in the layout because layouts don't re-render on
+   * navigation and can't read search params.
+   */
+  maps?: NavItem[][];
   /** Whether the nav starts expanded. Defaults to true. */
   defaultExpanded?: boolean;
 }
 
 function NavList({
   items,
+  maps,
   onNavigate,
 }: {
   items: NavItem[];
+  maps?: NavItem[][];
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const activeSlug = searchParams.get("slug");
 
+  const activeItems = maps
+    ? maps.find((map) => map.some((item) => item.slug === activeSlug)) ?? maps[0]
+    : items;
+
   return (
     <ul className={styles.list}>
-      {items.map((item) => {
+      {activeItems.map((item) => {
         const href = item.data
           ? `/preview/cover?slug=${item.slug}`
           : item.href;
@@ -68,6 +81,7 @@ function NavList({
 
 export default function NavBar({
   items = mockNavItems,
+  maps,
   defaultExpanded = false,
 }: NavBarProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
@@ -96,7 +110,11 @@ export default function NavBar({
       </button>
 
       <Suspense fallback={<ul className={styles.list} />}>
-        <NavList items={items} onNavigate={() => setExpanded(false)} />
+        <NavList
+          items={items}
+          maps={maps}
+          onNavigate={() => setExpanded(false)}
+        />
       </Suspense>
     </nav>
   );
