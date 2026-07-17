@@ -33,17 +33,29 @@ export interface CoverTemplateProps {
   backgroundColor?: string;
   /** Called when the bottom-right button is clicked, to advance to the next screen. */
   onNext?: () => void;
+
+  coverLists?: {
+    "listTitle": string;
+    "listItems": string[];
+  }[];
+
+  /** Rich content rendered below the scroll label. */
+  coverContent?: {
+    type: "list";
+    listTitle: string;
+    listItems: string[];
+  }[];
 }
 
 export default function CoverTemplate({
   navLinks,
   titleLines,
   subtitle,
-  bullets,
   scrollLabel = "SCROLL",
   footerText,
   backgroundColor,
   onNext,
+  coverContent
 }: CoverTemplateProps) {
   return (
     <section
@@ -86,16 +98,20 @@ export default function CoverTemplate({
           {scrollLabel}
         </span>
 
-        {bullets &&
-          <ul className={styles.bullets}>
-            {bullets.map((bullet, index) => (
-              <li key={bullet} style={{ "--i": index } as React.CSSProperties}>
-                {bullet}
-              </li>
+        {coverContent && coverContent.length > 0 ? (
+          <div className={styles.coverContent}>
+            {coverContent.map((item, index) => (
+              <div key={`${index}-${item.listTitle}`} className={styles.contentList}>
+                <p className={styles.contentListTitle}>{item.listTitle}</p>
+                <ul className={styles.contentListItems}>
+                  {item.listItems.map((listItem) => (
+                    <li key={listItem}>{listItem}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
-        }
-
+          </div>
+        ) : null}
       </div>
 
       <div className={styles.footer}>

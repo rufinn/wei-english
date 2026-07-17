@@ -9,3 +9,11 @@
   flex: 1;
   min-width: 0;
 }
+
+@media (max-width: 799px) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

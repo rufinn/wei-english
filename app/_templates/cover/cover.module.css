@@ -1,10 +1,13 @@
 .cover {
   --fade-up: fadeInUp;
+  --fade-down: fadeInDown;
   --fade-left: fadeInLeft;
   --unroll-left: unrollLeft;
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  width: 100%;
+  min-width: 0;
   min-height: 100vh;
   gap: clamp(2rem, 6vw, 5rem);
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
@@ -38,6 +41,7 @@
   align-self: start;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   max-width: 42rem;
+  margin: auto 0;
 }
 
 .title {
@@ -95,6 +99,46 @@
   margin-right: 0.5em;
 }
 
+.coverContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vw, 2rem);
+  animation: var(--fade-down) 0.6s ease both;
+  animation-delay: 9s;
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contentListTitle {
+  margin: 0;
+  font-family: var(--font-subtitle), serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: #6f7452;
+}
+
+.contentListItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  color: #1c1c1c;
+}
+
+.contentListItems li::before {
+  content: "\2726";
+  display: inline-block;
+  margin-right: 0.5em;
+  color: #6f7452;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -136,13 +180,13 @@
 
 .footerText {
   margin: 0;
-  font-family: var(--font-title), sans-serif;
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: clamp(0.5rem, 1.6vw, 1.25rem);
   letter-spacing: -0.01em;
   text-transform: uppercase;
   opacity: 0;
-  animation: var(--fade-up) 0.6s ease both;
-  animation-delay: 1.6s;
+  animation: var(--fade-left) 3s ease both;
+  animation-delay: 6s;
+  color: var(--darkest);
 }
 
 .nextButton {
@@ -171,12 +215,19 @@
   height: 1.25rem;
 }
 
+@media (max-width: 799px) {
+  .cover {
+    min-height: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .navLink,
   .titleLine,
   .subtitle,
   .bullets li,
   .scroll,
+  .coverContent,
   .footerText {
     animation: none;
     opacity: 1;
@@ -188,30 +239,6 @@
     width: auto;
     border-right: none;
   }
-}
-
-
-.type {
-    display: inline-block;
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid var(--darkest);
-    font-size: clamp(1rem, 4vw, 1.9rem);
-}
-
-.typeOnce {
-  animation:
-    typing 2.6s steps(var(--chars, 26)) 0.4s forwards,
-    caret .75s step-end infinite;
-}
-
-@keyframes typing {
-  to { width: calc(var(--chars, 26) * 1ch); }
-}
-
-@keyframes caret {
-  50% { border-color: transparent; }
 }
 
 

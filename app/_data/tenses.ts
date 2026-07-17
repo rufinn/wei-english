@@ -11,22 +11,21 @@ export type Slide =
     >)
   | ({ type: "quiz" } & Omit<FillInTemplateProps, "onBack" | "onNext">);
 
-export const PRESENT_SIMPLE_COVER = {
-  "titleLines": ["PRESENT", "SIMPLE"],
-  "subtitle": "HABIT. FACT. ROUTINE.",
-  "scrollLabel": "The beauty of everyday life lies in its pattern",
-  "footerText": "WEI'S ENGLISH"
-}
 
-export const PRESENT_SIMPLE_FEATURE = {
-  "headlineLines": ["Every day,", "every time."],
-  "subtitle": "ROUTINE. FACT. TRUTH",
-  "description": [
-    "We use Present Simple for habits,",
-    "general truths, routines,",
-    "and things that are always true."
-  ]
-}
+export const TENSES_COVER = [
+  {
+    "type": "cover",
+    "titleLines": ["Enslish", "Tenses"],
+    "subtitle": "TIME IS PRECIOUS.",
+    "scrollLabel": "Learning how to express it with precise words.",
+    "footerText": "WEI'S ENGLISH --- Find your way to speak confidently.",
+    "coverContent": [{
+      "type": "list",
+      "listTitle": "In this Guide",
+      "listItems": ["Present Simple", "Past Simple", "Future Tenses", "Perfect Tenses", "Practice"]
+    }]
+  }
+]
 
 export const PRESENT_SIMPLE = [
   {
@@ -38,12 +37,10 @@ export const PRESENT_SIMPLE = [
   },
   {
     "type": "feature",
-    "headlineLines": ["Every day,", "every time."],
+    "headlineLines": ["Every day, every time."],
     "subtitle": "ROUTINE. FACT. TRUTH",
     "description": [
-      "We use Present Simple for habits,",
-      "general truths, routines,",
-      "and things that are always true."
+      "We use Present Simple for habits general truths, routines, and things that are always true."
     ],
     "cards": [{
       "label": "Formula"
@@ -65,10 +62,10 @@ export const PAST_SIMPLE = [
   },
   {
     "type": "feature",
-    "headlineLines": ["It happened.", "It's finished."],
+    "headlineLines": ["It happened. It's finished."],
     "subtitle": "COMPLETED. SPECIFIC TIME. FINISHED",
     "description": [
-      "We use Past Simple tense for actions ", "that started and finished in the past."
+      "We use Past Simple tense for actions that started and finished in the past."
     ],
     "cards": [{
       "label": "Formula"
@@ -115,6 +112,7 @@ export const RELATIVE_CLAUSES = [
 
 
 export const SLIDES_MAP: { label: string; slug: string; data: Slide[] }[] = [
+    { label: 'Contnet', slug: 'tenses-content', data: TENSES_COVER as Slide[] },
     { label: '01 Present Simple', slug: 'present-simple', data: PRESENT_SIMPLE as Slide[] },
     { label: '02 Past Simple', slug: 'past-simple', data: PAST_SIMPLE as Slide[] },
     { label: '03 Future Tense', slug: 'future-tense', data: FUTURE_TENSE as Slide[] },

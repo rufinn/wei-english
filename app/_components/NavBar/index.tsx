@@ -68,7 +68,7 @@ function NavList({
 
 export default function NavBar({
   items = mockNavItems,
-  defaultExpanded = true,
+  defaultExpanded = false,
 }: NavBarProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
 

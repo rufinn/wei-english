@@ -1,5 +1,6 @@
 import { Playfair_Display, Nunito } from "next/font/google";
 import styles from "./feature.module.css";
+import TypingText from "@/app/_components/TypingText";
 
 const headlineFont = Playfair_Display({
   subsets: ["latin"],
@@ -55,7 +56,7 @@ export default function FeatureTemplate({
       style={backgroundColor ? { backgroundColor } : undefined}
     >
       <section className={styles.topPanel}>
-        <section className={styles.leftPanel}>
+        {/* <section className={styles.leftPanel}> */}
         <h1 className={styles.headline}>
           {headlineLines.map((line, index) => (
             <span
@@ -68,29 +69,35 @@ export default function FeatureTemplate({
           ))}
         </h1>
 
+        {/* {
+          subtitle &&
+            <p className={`unrollLeft ${styles.subtitle}`}>{subtitle}</p>
+        } */}
+
+        {
+          subtitle &&
+            <TypingText
+              className={styles.subtitle}
+              text={subtitle}
+              startDelay={3}
+            />
+        }
         <hr
           className={styles.divider}
           style={dividerColor ? { background: dividerColor } : undefined}
         />
-
-          {
-            subtitle &&
-              <p className={`unrollLeft ${styles.subtitle}`}>{subtitle}</p>
-          }
-
-
-        <p className={styles.description}>
+        <span className={styles.description}>
           {description.map((line, index) => (
-            <span
+            <TypingText
               key={`${index}-${line}`}
-              className={`unrollLeft ${styles.descriptionLine}`}
-              style={{ "--i": index } as React.CSSProperties}
-            >
-              {line}
-            </span>
+              startDelay={6}
+              // className={`unrollLeft ${styles.descriptionLine}`}
+              // style={{ "--i": index } as React.CSSProperties}
+              text={line}
+            />
           ))}
-        </p>
-        </section>
+        </span>
+        {/* </section> */}
 
       {
         rightPanel &&

@@ -63,7 +63,7 @@ function CoverPreviewContent() {
         {
           slide.cards && slide.cards.map((item) => {
             return (
-              <Card key={item.label} label={item.label} />
+              <Card key={item.label} label={item.label}> Hello world </Card>
             )
           })
         }

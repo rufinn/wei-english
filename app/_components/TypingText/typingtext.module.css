@@ -1,0 +1,72 @@
+/* Typewriter that wraps.
+   Every character is in the DOM from the start (opacity: 0), so the browser
+   computes the final line breaks once. Typing only flips characters visible —
+   nothing reflows, and wrapping is just normal text wrapping. */
+
+.tw {
+  position: relative;
+  /* margin: 0; */
+  /* font-family: var(--font-geist-mono, ui-monospace, "SF Mono", Menlo, Consolas, monospace); */
+  line-height: 1.75;
+  white-space: pre-wrap;      /* keep authored line breaks, still wrap */
+  overflow-wrap: anywhere;    /* never let a long word overflow */
+}
+
+/* Reserved but not-yet-typed characters still occupy their space (opacity, not
+   display), so the layout is stable and the full text stays available to
+   screen readers. */
+.char {
+  position: relative;         /* containing block for the caret */
+  opacity: 0;
+  transition: opacity 90ms linear;
+}
+
+.char.on {
+  opacity: 1;
+}
+
+/* Peek at the reserved space to see the mechanism. */
+.ghost .char {
+  opacity: 0.12;
+}
+.ghost .char.on {
+  opacity: 1;
+}
+
+/* Caret rides on the last typed character with zero width, so it can never
+   introduce a break opportunity mid-word and shift the wrap. */
+.char.caret::after,
+.tw.empty::before {
+  content: "";
+  position: absolute;
+  top: 0.18em;
+  height: 1.15em;
+  width: 2px;
+  background: var(--caret-color, currentColor);
+  animation: blink 1.05s steps(1, end) infinite;
+}
+
+.char.caret::after {
+  right: -1px;
+}
+
+.tw.empty::before {
+  left: 0;
+  top: 0.35em;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    transition: none;
+  }
+  .char.caret::after,
+  .tw.empty::before {
+    animation: none;
+  }
+}

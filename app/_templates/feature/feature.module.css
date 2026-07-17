@@ -33,14 +33,16 @@
 }
 
 .subtitle {
-  animation: var(--unroll-left) 6s ease both;
-  animation-delay: 1s;
+  margin: 0.5rem 0;
+  animation-delay: 6s;
+  /* animation: var(--unroll-left) 6s ease both;
+  animation-delay: 1s; */
 }
 
 .divider {
   width: 4rem;
   height: 3px;
-  margin: clamp(1.5rem, 3vw, 2rem) 0;
+  margin: 0.5rem 0;
   background: #b5772f;
   border: none;
 }
@@ -105,9 +107,9 @@
   gap: 1rem;
 }
 
-.topPanel .leftPanel {
+/* .topPanel .leftPanel {
   max-width: 50%;
-}
+} */
 
 .rightPanel {
   flex-grow: 1;
@@ -115,7 +117,11 @@
   animation: var(--fade-left) 0.8s ease both;
   animation-delay: var(--right-panel-delay, 1.5s);
 }
-.topPanel,
+.topPanel {
+  display: flex;
+  flex-direction: column;
+}
+
 .bottomPanel {
   display: flex;
   flex-direction: row;
