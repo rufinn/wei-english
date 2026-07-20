@@ -1,0 +1,40 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f5ede4;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.headerCell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #b5772f;
+  border-bottom: 2px solid #b5772f;
+}
+
+.cell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: #b5772f;
+}
+
+.row:not(:last-child) .cell {
+  border-bottom: 1px solid rgba(181, 119, 47, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  .table {
+    background: var(--card-default-bg);
+  }
+
+  .cell {
+    color: #b5772f;
+  }
+}

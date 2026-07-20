@@ -212,7 +212,7 @@ export const RELATIVE_CLAUSES_QUIZ_FILL_IN_DATA = {
   ]
 }
 
-export const RELATIVE_CLAUSES_QUIZ_READING = {
+export const RELATIVE_CLAUSES_QUIZ_READING_DATA = {
   "id": "relative-clauses-part-6-reading",
   "meta": {
     "title": "Integrated Reading",
@@ -492,26 +492,44 @@ export const RELATIVE_CLAUSES_COVER = [
   {
     "type": "cover",
     "titleLines": ["RELATIVE CLAUSES"],
-    "subtitle": "",
+    "subtitle": "who · whom · which · whose · that",
     "scrollLabel": "Learning how to  identify, use, and explain relative clauses.",
     "footerText": "WEI'S ENGLISH --- Find your way to speak confidently.",
   }
 ]
 
 export const RELATIVE_CLAUSES = [
+  // {
+  //   "type": "cover",
+  //   "titleLines": ["RELATIVE CLAUSES"],
+  //   "subtitle": "PLAN. EXPECTATION. POSSIBILITY.",
+  //   "scrollLabel": "It will happen. We are looking ahead.",
+  //   "footerText": "WEI'S ENGLISH"
+  // },
   {
-    "type": "cover",
-    "titleLines": ["RELATIVE CLAUSES"],
-    "subtitle": "PLAN. EXPECTATION. POSSIBILITY.",
-    "scrollLabel": "It will happen. We are looking ahead.",
-    "footerText": "WEI'S ENGLISH"
+    "type": "feature",
+    "headlineLines": ["WHO"],
+    "subtitle": "修飾人（主格）",
+    "description": [
+      `"who" is used for people and acts as the subject of the relative clause.\n用於「人」，在子句中擔任主詞角色。`
+    ],
+    "content": {
+      type: "table",
+      data: {
+        headers: ["Structure 句型", "Example 例句"],
+        rows: [
+          ["The person whom + S + V...", "The client whom we met last Friday confirmed the order."],
+          ["...to whom + S + V...", "She is the person to whom you should address your complaint."]
+        ]
+      }
+    }
   },
   {
     "type": "feature",
-    "headlineLines": ["It will happen."],
-    "subtitle": "FUTURE. PLAN. POSSIBILITY.",
+    "headlineLines": ["WHOM"],
+    "subtitle": "修飾人（受格，較正式）",
     "description": [
-      "We use Future Tense for actions","that will happen in the future."
+      `"whom is the object form. Use it after prepositions (to whom, for whom). In casual speech, who is often used instead.\n受格，用於介係詞後（to whom, for whom）。口語中常以 who 代替。`
     ],
     "cards": [{
       "label": "Formula"
@@ -528,8 +546,22 @@ export const RELATIVE_CLAUSES_QUIZ_FILL_IN = [
     "type": "quiz",
     "quiz": RELATIVE_CLAUSES_QUIZ_FILL_IN_DATA
   }
-]
+];
+
+export const RELATIVE_CLAUSES_QUIZ_READING = [
+  {
+    "type": "quiz",
+    "quiz": RELATIVE_CLAUSES_QUIZ_READING_DATA
+  }
+];
+
 export const RELATIVE_CLAUSES_SLIDES_MAP: { label: string; slug: string; data: Slide[] }[] = [
     { label: 'Contnet', slug: 'rel-clauses-content', data: RELATIVE_CLAUSES_COVER as Slide[] },
+    {
+      label: '01 Who', slug: 'rel-clauses-01', data: RELATIVE_CLAUSES as Slide[]
+    },
     { label: 'Quiz: Fill In', slug: 'relative-clauses', data: RELATIVE_CLAUSES_QUIZ_FILL_IN as Slide[] },
+    // {
+    //   label: 'Quiz: Reading', slug: 'rel-clauses-reading', data: RELATIVE_CLAUSES_QUIZ_READING as Slide[]
+    // }
 ]

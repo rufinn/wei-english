@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Bodoni_Moda, Jost } from "next/font/google";
+import { Playfair_Display, Nunito } from "next/font/google";
 import styles from "./fillIn.module.css";
 import ScoreCard from "../_components/scoreCard";
 
-const displayFont = Bodoni_Moda({
+const displayFont = Playfair_Display({
   subsets: ["latin"],
+  weight: ["500", "600", "700", "900"],
   style: ["normal", "italic"],
   variable: "--font-display",
 });
 
-const bodyFont = Jost({
+const bodyFont = Nunito({
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
   variable: "--font-body",
 });
 
@@ -272,6 +274,10 @@ export default function FillInTemplate({
               )}
               currentIndex={index}
               total={total}
+              onSelect={(i) => {
+                setPanelOpen(false);
+                setIndex(i);
+              }}
             />
 
             <div className={styles.navrow}>
@@ -292,71 +298,6 @@ export default function FillInTemplate({
               </button>
             </div>
           </div>
-
-          {/* Side column ----------------------------------------------- */}
-          {/* <div
-            className={`${styles.sidecol} ${
-              panelOpen ? styles.sidecolOpen : styles.sidecolClosed
-            }`}
-          >
-            <button
-              type="button"
-              className={styles.panelToggle}
-              aria-expanded={panelOpen}
-              onClick={() => setPanelOpen((o) => !o)}
-            >
-              {panelOpen ? "›" : "‹"}
-            </button>
-
-            <div className={styles.panelBody} hidden={!panelOpen}>
-            {answered && selectedOption && (
-              <div className={styles.verdict}>
-                <span
-                  className={`${styles.verdictWord} ${
-                    isCorrect ? styles.verdictWordOk : ""
-                  }`}
-                >
-                  {isCorrect ? "Correct —" : "Not quite —"}
-                </span>
-                <p className={styles.verdictText}>
-                  {selectedOption.explanation}
-                  {!isCorrect && (
-                    <>
-                      {" "}
-                      The intended answer is <b>{current.primaryAnswer}</b>.
-                    </>
-                  )}
-                </p>
-              </div>
-            )}
-
-            <div className={styles.scorecard}>
-              <div className={styles.scoreLbl}>
-                Your card — {correctCount} of {total} correct
-              </div>
-              <div className={styles.dots}>
-                {Array.from({ length: total }).map((_, i) => {
-                  const q = questions[i];
-                  const ans = q ? answers[q.id] : undefined;
-                  const done = q && ans != null;
-                  const ok = done && q.acceptedAnswers.includes(ans);
-                  return (
-                    <span
-                      key={i}
-                      className={[
-                        styles.dot,
-                        done ? (ok ? styles.dotOn : styles.dotMiss) : "",
-                        i === index ? styles.dotCurrent : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>

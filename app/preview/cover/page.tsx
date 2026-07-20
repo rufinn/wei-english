@@ -3,13 +3,9 @@
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import slides from "../slides.json";
-import { SLIDES_MAP, type Slide } from "@/app/_data/tenses";
-import CoverTemplate from "../../_templates/cover";
-import FeatureTemplate from "../../_templates/feature";
-import FillInTemplate from "../../_templates/quiz/fillIn";
-import Card from "@/app/_components/Card";
-import styles from './cover.module.css';
+import { type Slide } from "@/app/_data/tenses";
 import { RELATIVE_CLAUSES_SLIDES_MAP } from "@/app/_data/relative_clauses";
+import FeatureContent from "./_components/FeatureContent";
 
 const defaultSlides = slides as Slide[];
 
@@ -40,37 +36,14 @@ function CoverPreviewContent() {
 
   const slide = typedSlides[index];
 
-  if (slide.type === "cover") {
-    return <CoverTemplate {...slide} onNext={goNext} />;
-  }
-
-  if (slide.type === "quiz") {
-    return (
-      <FillInTemplate
-        {...slide}
-        onBack={goBack}
-        onNext={isLast && !nextDeck ? undefined : goNext}
-      />
-    );
-  }
-
   return (
-    <FeatureTemplate
-      {...slide}
+    <FeatureContent
+      slide={slide}
+      isLast={isLast}
+      hasNextDeck={Boolean(nextDeck)}
+      onNext={goNext}
       onBack={goBack}
-      onNext={isLast && !nextDeck ? undefined : goNext}
-    >
-      <div className={`${styles.vertical} ${styles.cards}`}>
-         {
-           slide.cards && slide.cards.map((item) => {
-             return (
-               <Card key={item.label} label={item.label} />
-             )
-           })
-         }
-         <Card className={styles.card} label={"Signal Word"} />
-      </div>
-      </FeatureTemplate>
+    />
   );
 }
 

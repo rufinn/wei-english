@@ -28,6 +28,24 @@
   border-radius: 50%;
   border: 0.0625rem solid var(--ink);
   display: block;
+  background: transparent;
+}
+
+button.dot {
+  padding: 0;
+  box-sizing: content-box;
+  cursor: pointer;
+  appearance: none;
+  transition: transform 0.15s ease;
+}
+
+button.dot:hover {
+  transform: scale(1.25);
+}
+
+button.dot:focus-visible {
+  outline: 0.125rem solid var(--taupe);
+  outline-offset: 0.125rem;
 }
 
 .dotOn {

@@ -18,6 +18,11 @@ export interface ScoreCardProps {
    * Defaults to the "Your card — N of M correct" line.
    */
   label?: (correct: number, total: number) => string;
+  /**
+   * Called with a question's index when its dot is clicked. When provided,
+   * dots render as buttons so the card doubles as a jump-to navigator.
+   */
+  onSelect?: (index: number) => void;
 }
 
 const defaultLabel = (correct: number, total: number) =>
@@ -28,6 +33,7 @@ export default function ScoreCard({
   currentIndex,
   total = statuses.length,
   label = defaultLabel,
+  onSelect,
 }: ScoreCardProps) {
   const correctCount = statuses.filter((s) => s === "correct").length;
 
@@ -39,16 +45,26 @@ export default function ScoreCard({
           const status = statuses[i];
           const done = status != null && status !== "unanswered";
           const ok = status === "correct";
+          const className = [
+            styles.dot,
+            done ? (ok ? styles.dotOn : styles.dotMiss) : "",
+            i === currentIndex ? styles.dotCurrent : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
+
+          if (!onSelect) {
+            return <span key={i} className={className} />;
+          }
+
           return (
-            <span
+            <button
               key={i}
-              className={[
-                styles.dot,
-                done ? (ok ? styles.dotOn : styles.dotMiss) : "",
-                i === currentIndex ? styles.dotCurrent : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
+              type="button"
+              className={className}
+              aria-label={`Go to question ${i + 1}`}
+              aria-current={i === currentIndex ? "true" : undefined}
+              onClick={() => onSelect(i)}
             />
           );
         })}
